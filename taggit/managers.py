@@ -247,6 +247,8 @@ class _TaggableManager(models.Manager):
             self.clear()
             self.add(*tags)
         else:
+            if not len(tags[0]):
+                return
             # make sure we're working with a collection of a uniform type
             objs = self._to_tag_model_instances(tags)
 
